@@ -31,6 +31,7 @@
         </activity>
         <activity
             android:name=".SecondActivity"
+            android:launchMode="singleTask"
             android:label="Activity 2">
             <intent-filter>
                 <action android:name="com.example.activitytest.SecondActivity" />
@@ -41,6 +42,7 @@
         </activity>
         <activity
             android:name=".FirstActivity"
+            android:launchMode="singleTop"
             android:label="Activity 1">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
