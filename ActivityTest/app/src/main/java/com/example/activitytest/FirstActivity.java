@@ -25,8 +25,7 @@ public class FirstActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(FirstActivity.this, "You clicked Button1", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent("android.intent.action.MAIN");
-                intent.addCategory("android.intent.category.LAUNCHER");
+                Intent intent = new Intent(FirstActivity.this, FirstActivity.class);//隐式Intent失败，指向系统其他软件
                 startActivity(intent);
             }
         });
