@@ -1,6 +1,7 @@
 package com.example.recyclerviewtest;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,10 +43,27 @@ public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.ViewHolder>{
         final ViewHolder holder = new ViewHolder(view);
         holder.fruitView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
                 int position = holder.getAdapterPosition();
-                Fruit fruit = mFruitList.get(position);
+                final Fruit fruit = mFruitList.get(position);
                 Toast.makeText(v.getContext(), "你点击了文字： " + fruit.getName(), Toast.LENGTH_SHORT).show();
+
+                final EditText et = new EditText(v.getContext());
+                new AlertDialog.Builder(v.getContext()).setTitle("请输入修改名称")
+                        .setIcon(android.R.drawable.sym_def_app_icon)
+                        .setView(et)
+                        .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                            //按下确定键后的事件
+                            Fruit f = mFruitList.get(mFruitList.indexOf(fruit));
+                            f.setName(et.getText().toString());
+                            mFruitList.set(mFruitList.indexOf(fruit),f);
+                                Toast.makeText(v.getContext(), "成功修改为："+et.getText().toString(),Toast.LENGTH_SHORT).show();
+                                v.invalidate();
+                            }
+                        }).setNegativeButton("取消",null).show();
+
             }
         });
         holder.fruitImage.setOnClickListener(new View.OnClickListener() {
