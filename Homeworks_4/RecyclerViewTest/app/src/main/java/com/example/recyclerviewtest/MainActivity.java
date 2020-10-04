@@ -4,7 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,5 +59,20 @@ public class MainActivity extends AppCompatActivity {
 
     private String getRandomLengthName(String name, int i) {
         return name+i;
+    }
+
+    public void alert_edit(View view){
+        final EditText et = new EditText(this);
+        new AlertDialog.Builder(this).setTitle("请输入修改名称")
+                .setIcon(android.R.drawable.sym_def_app_icon)
+                .setView(et)
+                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //按下确定键后的事件
+                        
+                        Toast.makeText(getApplicationContext(), "成功修改为："+et.getText().toString(),Toast.LENGTH_SHORT).show();
+                    }
+                }).setNegativeButton("取消",null).show();
     }
 }
