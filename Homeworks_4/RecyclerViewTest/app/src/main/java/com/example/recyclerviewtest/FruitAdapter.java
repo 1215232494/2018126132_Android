@@ -60,7 +60,9 @@ public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.ViewHolder>{
                             f.setName(et.getText().toString());
                             mFruitList.set(mFruitList.indexOf(fruit),f);
                                 Toast.makeText(v.getContext(), "成功修改为："+et.getText().toString(),Toast.LENGTH_SHORT).show();
-                                v.invalidate();
+                                //刷新View显示
+//                                v.invalidate();
+//                                onCreateViewHolder(parent, viewType);
                             }
                         }).setNegativeButton("取消",null).show();
 
