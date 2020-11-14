@@ -1,5 +1,9 @@
 # 生命周期回调函数在四种模式下的触发条件和运行机制(标准模式,单顶模式,单任务模式,单实例模式)
 
+# Intent 应用，特别是系统内置隐含 Intent和自定义的 Intent 的使用。
+
+
+
 ## 一、FirstActivity（主活动）、SecondActivity均默认使用standard模式
 
 ### 打开应用，主活动（活动一）被创建
