@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button:
-                
+                imageView.setImageResource(R.drawable.img_2);
                 break;
             default:
                 break;
