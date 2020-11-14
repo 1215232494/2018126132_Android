@@ -13,6 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
+
+
     class NetworkChangeReceiver extends BroadcastReceiver {
 
         @Override
