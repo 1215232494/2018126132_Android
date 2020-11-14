@@ -33,12 +33,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button:
-                imageView.setImageResource(R.drawable.img_2);
-//                ProgressDialog progressDialog = new ProgressDialog(MainActivity.this);
-//                progressDialog.setTitle("This is ProgressDialog");
-//                progressDialog.setMessage("Loading...");
-//                progressDialog.setCancelable(true);
-//                progressDialog.show();
+//                imageView.setImageResource(R.drawable.img_2);
+                ProgressDialog progressDialog = new ProgressDialog(MainActivity.this);
+                progressDialog.setTitle("This is ProgressDialog");
+                progressDialog.setMessage("Loading...");
+                progressDialog.setCancelable(true);
+                progressDialog.show();
                 break;
             default:
                 break;
