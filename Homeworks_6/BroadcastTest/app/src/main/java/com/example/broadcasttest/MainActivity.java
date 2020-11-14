@@ -12,9 +12,15 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 public class MainActivity extends AppCompatActivity {
 
+    private IntentFilter intentFilter;
+
+    private LocalReceiver localReceiver;
+
+    private LocalBroadcastManager localBroadcastManager;
 
     class NetworkChangeReceiver extends BroadcastReceiver {
 
@@ -35,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private IntentFilter intentFilter;
 
     private NetworkChangeReceiver networkChangeReceiver;
 
@@ -48,22 +53,37 @@ public class MainActivity extends AppCompatActivity {
         intentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
         networkChangeReceiver = new NetworkChangeReceiver();
         registerReceiver(networkChangeReceiver, intentFilter);
+        localBroadcastManager = LocalBroadcastManager.getInstance(this); // 获取实例
         Button button = (Button) findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                Intent intent = new Intent("com.example.broadcasttest.MY_BROADCAST");//发送全局广播
                 sendBroadcast(intent);
+                 intent = new Intent("com.example.broadcasttest.LOCAL_BROADCAST");// 发送本地广播
+                localBroadcastManager.sendBroadcast(intent);
             }
         });
+        intentFilter.addAction("com.example.broadcasttest.LOCAL_BROADCAST");
+        localReceiver = new LocalReceiver();
+        localBroadcastManager.registerReceiver(localReceiver, intentFilter); // 注册本地广播监听器
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         unregisterReceiver(networkChangeReceiver);
+        localBroadcastManager.unregisterReceiver(localReceiver);
     }
 
+    class LocalReceiver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Toast.makeText(context, "Received local broadcast", Toast.LENGTH_SHORT).show();
+        }
+
+    }
 
 
 
