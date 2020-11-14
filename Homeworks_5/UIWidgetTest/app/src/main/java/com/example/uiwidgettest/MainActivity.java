@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private ImageView imageView;
 
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button button = (Button) findViewById(R.id.button);
         editText = (EditText) findViewById(R.id.edit_text);
         imageView  = (ImageView) findViewById(R.id.image_view);
+        progressBar = (ProgressBar) findViewById(R.id.progress_bar);
         button.setOnClickListener(this);
     }
 
@@ -32,6 +34,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
             case R.id.button:
                 imageView.setImageResource(R.drawable.img_2);
+//                ProgressDialog progressDialog = new ProgressDialog(MainActivity.this);
+//                progressDialog.setTitle("This is ProgressDialog");
+//                progressDialog.setMessage("Loading...");
+//                progressDialog.setCancelable(true);
+//                progressDialog.show();
                 break;
             default:
                 break;
