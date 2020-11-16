@@ -1,5 +1,8 @@
 package com.example.androidthreadtest;
 
+import android.annotation.SuppressLint;
+import android.os.Handler;
+import android.os.Message;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,7 +16,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private TextView text;
 
+    @SuppressLint("HandlerLeak")
+    private Handler handler = new Handler() {
 
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case UPDATE_TEXT:
+                    // 在这里可以进行UI操作
+                    text.setText("Nice to meet you");
+                    break;
+                default:
+                    break;
+            }
+        }
+
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
