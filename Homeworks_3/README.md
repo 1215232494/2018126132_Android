@@ -2,6 +2,10 @@
 
 # Intent 应用，特别是系统内置隐含 Intent和自定义的 Intent 的使用。
 
+遇到问题：隐式跳转主活动时跳转至其他软件的问题。
+
+解决方法：采用显式Intent跳转主活动。
+
 
 
 ## 一、FirstActivity（主活动）、SecondActivity均默认使用standard模式
