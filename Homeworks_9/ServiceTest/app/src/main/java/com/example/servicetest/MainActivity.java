@@ -18,6 +18,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button stopService = (Button) findViewById(R.id.stop_service);
         startService.setOnClickListener(this);
         stopService.setOnClickListener(this);
+        Button startIntentService = (Button) findViewById(R.id.start_intent_service);
+        startIntentService.setOnClickListener(this);
     }
 
     @Override
