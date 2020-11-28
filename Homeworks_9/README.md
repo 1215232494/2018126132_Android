@@ -4,18 +4,24 @@
 
 ![image-20201128224414459](README.assets/image-20201128224414459.png)
 
-开启服务
+点击开启服务，调用onCreate()和onStartCommand()方法
 
 ![image-20201128222608274](README.assets/image-20201128222608274.png)
 
-再次点击开启服务
+再次点击开启服务，只调用onStartCommand()方法
 
 ![image-20201128222640025](README.assets/image-20201128222640025.png)
 
-停止服务
+点击停止服务，调用onDestroy()方法
 
 ![image-20201128222704513](README.assets/image-20201128222704513.png)
 
 
 
-![image-20201128222859151](README.assets/image-20201128222859151.png)
+### 使用IntentService实现多线程
+
+![image-20201128231807157](README.assets/image-20201128231807157.png)
+
+点击子线程服务按钮
+
+![image-20201128231403551](README.assets/image-20201128231403551.png)
