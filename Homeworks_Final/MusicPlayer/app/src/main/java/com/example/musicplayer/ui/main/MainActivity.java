@@ -1,10 +1,14 @@
 package com.example.musicplayer.ui.main;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.widget.RadioButton;
 
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.ViewPager;
 
 import butterknife.BindView;
@@ -78,6 +82,44 @@ public class MainActivity extends BaseActivity {
         });
 
         radioButtons.get(DEFAULT_PAGE_INDEX).setChecked(true);
+
+//        //1.先请求判断是否具有对应权限
+//        if(ContextCompat.checkSelfPermission
+//                (this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+//                != PackageManager.PERMISSION_GRANTED)
+//        //根据返回的结果，判断对应的权限是否有。
+//        {
+//            ActivityCompat.requestPermissions
+//                    (this,
+//                            new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+//                            0);
+//        }
+
+        //2.先请求判断是否具有对应权限
+        if(ContextCompat.checkSelfPermission
+                (this, Manifest.permission.READ_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED)
+        //根据返回的结果，判断对应的权限是否有。
+        {
+            ActivityCompat.requestPermissions
+                    (this,
+                            new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                            0);
+        }
+//
+//        //3.先请求判断是否具有对应权限
+//        if(ContextCompat.checkSelfPermission
+//                (this, Manifest.permission.MOUNT_UNMOUNT_FILESYSTEM)
+//                != PackageManager.PERMISSION_GRANTED)
+//        //根据返回的结果，判断对应的权限是否有。
+//        {
+//            ActivityCompat.requestPermissions
+//                    (this,
+//                            new String[]{Manifest.permission.MOUNT_UNMOUNT_FILESYSTEM},
+//                            0);
+//        }
+
+
     }
 
     @Override
