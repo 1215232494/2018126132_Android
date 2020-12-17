@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<CoordinatorLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
 
-    <AppBarLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
 
-        <Toolbar
+        <androidx.appcompat.widget.Toolbar
             style="@style/MP.Theme.Widget.Toolbar"
             />
-    </AppBarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         xmlns:recyclerView="http://schemas.android.com/apk/res-auto"
@@ -31,4 +31,4 @@
         android:text="@string/mp.local_files.file_system.empty"
         tools:visibility="visible"
         />
-</CoordinatorLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
