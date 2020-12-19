@@ -13,15 +13,6 @@ import android.util.AttributeSet;
 import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 
-/**
- * Created with Android Studio.
- * User: ryan.hoo.j@gmail.com
- * Date: 9/8/16
- * Time: 4:23 PM
- * Desc: ShadowImageView
- * Stole from {@link androidx.core.widget.SwipeRefreshLayout}'s implementation to display beautiful shadow
- * for circle ImageView.
- */
 public class ShadowImageView extends ImageView {
 
     private static final int KEY_SHADOW_COLOR = 0x1E000000;

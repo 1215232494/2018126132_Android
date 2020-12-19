@@ -17,12 +17,6 @@ public class FileUtils {
 
     private static final String UNKNOWN = "unknown";
 
-    /**
-     * http://stackoverflow.com/a/5599842/2290191
-     *
-     * @param size Original file size in byte
-     * @return Readable file size in formats
-     */
     public static String readableFileSize(long size) {
         if (size <= 0) return "0";
         final String[] units = new String[]{"b", "kb", "M", "G", "T"};

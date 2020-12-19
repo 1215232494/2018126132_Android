@@ -1,11 +1,14 @@
 package com.example.musicplayer.player;
 
 import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Binder;
+import android.os.Build;
 import android.os.IBinder;
 import android.widget.RemoteViews;
 
@@ -205,11 +208,12 @@ public class PlaybackService extends Service implements IPlayback, IPlayback.Cal
      * Show a notification while this service is running.
      */
     private void showNotification() {
+
         // The PendingIntent to launch our activity if the user selects this notification
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0, new Intent(this, MainActivity.class), 0);
 
         // Set the info for the views that show in the notification panel.
-        Notification notification = new NotificationCompat.Builder(this)
+        Notification notification = new NotificationCompat.Builder(this,"default")
                 .setSmallIcon(R.drawable.ic_notification_app_logo)  // the status icon
                 .setWhen(System.currentTimeMillis())  // the time stamp
                 .setContentIntent(contentIntent)  // The intent to send when the entry is clicked
@@ -218,6 +222,13 @@ public class PlaybackService extends Service implements IPlayback, IPlayback.Cal
                 .setPriority(NotificationCompat.PRIORITY_MAX)
                 .setOngoing(true)
                 .build();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            NotificationManager manager=(NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+            String channelId = "default";
+            String channelName = "默认通知";
+            manager.createNotificationChannel(new NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_HIGH));
+            manager.notify(1,notification);
+        }
 
         // Send the notification.
         startForeground(NOTIFICATION_ID, notification);
