@@ -77,7 +77,7 @@ public class ShadowImageView extends ImageView {
         setBackground(circle);
 
         mRotateAnimator = ObjectAnimator.ofFloat(this, "rotation", 0f, 360f);
-        mRotateAnimator.setDuration(20000);
+        mRotateAnimator.setDuration(20000);//把手机开发者选项中的Animator时长播放打开，不然会导致ObjectAnimator动画框架不旋转
         mRotateAnimator.setInterpolator(new LinearInterpolator());
         mRotateAnimator.setRepeatMode(ValueAnimator.RESTART);
         mRotateAnimator.setRepeatCount(ValueAnimator.INFINITE);
